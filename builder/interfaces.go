@@ -1,6 +1,6 @@
 package builder
 
-import "github.com/mymyka/v/v/docs"
+import "github.com/mymyka/v/docs"
 
 type ValidationRule[T any] interface {
 	Validate(*T) error

@@ -2,7 +2,7 @@ package vecho
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type VGroup struct {

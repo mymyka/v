@@ -4,10 +4,9 @@ import (
 	"fmt"
 
 	"github.com/labstack/echo/v4"
-	"github.com/mymyka/v/v/builder"
-	"github.com/mymyka/v/v/docs"
-	v "github.com/mymyka/v/v/validators"
-	"github.com/mymyka/v/v/vecho"
+	"github.com/mymyka/v/builder"
+	v "github.com/mymyka/v/validators"
+	"github.com/mymyka/v/vecho"
 )
 
 type ReristerUserReq struct {
@@ -58,12 +57,12 @@ func main() {
 	e := vecho.New(echo.New())
 	a := e.Group("/a")
 	o := a.GET("a", handler).WithDocs(
-		docs.Description("ABC"),
-		docs.Summary("aaa"),
-		docs.OperationId("aaaa"),
+		d.Description("ABC"),
+		d.Summary("aaa"),
+		d.OperationId("aaaa"),
 
-		docs.Req[ReristerUserReq](),
-		docs.Res[Tokens](),
+		d.Req[ReristerUserReq](),
+		d.Res[Tokens](),
 	)
 
 	fmt.Println(o.R.Description)
