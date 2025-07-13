@@ -11,6 +11,17 @@ type VGroup struct {
 }
 
 func (g *VGroup) GET(path string, h func(echo.Context) error, m ...echo.MiddlewareFunc) *VRoute {
-	r := g.Group.GET(path, h, m...)
-	return NewVRoute(r)
+	echoRoute := g.Group.GET(path, h, m...)
+
+	docsRoute := docs.Route{
+		Method: "get",
+		Path:   path,
+	}
+
+	vRoute := VRoute{
+		Route: echoRoute,
+		R:     &docsRoute,
+	}
+
+	return &vRoute
 }

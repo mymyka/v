@@ -16,8 +16,11 @@ type Group struct {
 }
 
 type Route struct {
-	Method string
-	Path   string
+	Method      string
+	Path        string
+	Description string
+	Summary     string
+	OperationId string
 }
 
 type Property struct {

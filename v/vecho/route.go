@@ -1,15 +1,19 @@
 package vecho
 
-import "github.com/labstack/echo/v4"
+import (
+	"github.com/labstack/echo/v4"
+	"github.com/mymyka/v/v/docs"
+)
 
 type VRoute struct {
 	*echo.Route
+	R *docs.Route
 }
 
-func NewVRoute(r *echo.Route) *VRoute {
-	return &VRoute{
-		Route: r,
+func (r *VRoute) WithDocs(a ...func(*docs.Route)) *VRoute {
+	for _, c := range a {
+		c(r.R)
 	}
-}
 
-func (r *VRoute) WithDocs(a ...any) {}
+	return r
+}

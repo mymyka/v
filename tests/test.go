@@ -3,7 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/mymyka/v/v"
+	"github.com/labstack/echo/v4"
+	"github.com/mymyka/v/v/builder"
+	"github.com/mymyka/v/v/docs"
+	v "github.com/mymyka/v/v/validators"
+	"github.com/mymyka/v/v/vecho"
 )
 
 type ReristerUserReq struct {
@@ -21,7 +25,7 @@ type LoginUserReq struct {
 	Likes    int
 }
 
-func (r ReristerUserReq) Validator(b v.ValidationBuilder) {
+func (r ReristerUserReq) Validator(b builder.ValidationBuilder) {
 	b.ForString(
 		&r.Username,
 		v.RequiredString(),
@@ -42,7 +46,7 @@ func main() {
 		Likes:    22,
 	}
 
-	b := v.ValidationBuilderImpl{}
+	b := builder.ValidationBuilderImpl{}
 	r.Validator(&b)
 
 	if err := b.Validate(); err != nil {
@@ -51,15 +55,19 @@ func main() {
 		fmt.Println("Validation passed!")
 	}
 
-	// e := vecho.New(echo.New())
-	// e.Docs.Info.Title = "a"
-	// a := e.Group("/a")
-	// a.GET("a", handler).WithDocs(
-	// 	vecho.Description("aaaa"),
-	// 	vecho.Summary("aaa"),
-	// 	vecho.OperationId("aaaa"),
+	e := vecho.New(echo.New())
+	a := e.Group("/a")
+	o := a.GET("a", handler).WithDocs(
+		docs.Description("ABC"),
+		docs.Summary("aaa"),
+		docs.OperationId("aaaa"),
 
-	// 	vecho.Req[ReristerUserReq](),
-	// 	vecho.Res[Tokens](),
-	// )
+		docs.Req[ReristerUserReq](),
+		docs.Res[Tokens](),
+	)
+
+	fmt.Println(o.R.Description)
+	fmt.Println(o.R.Method)
 }
+
+func handler(ctx echo.Context) error { return nil }

@@ -1,4 +1,4 @@
-package v
+package builder
 
 import "github.com/mymyka/v/v/docs"
 
