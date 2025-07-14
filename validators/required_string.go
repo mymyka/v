@@ -3,7 +3,7 @@ package validators
 import (
 	"errors"
 
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type reqiredStringRule struct{}
@@ -20,6 +20,6 @@ func (r *reqiredStringRule) Validate(s *string) error {
 	return nil
 }
 
-func (r *reqiredStringRule) Docs(p *docs.Property) {
+func (r *reqiredStringRule) Docs(p *docs.DocsProperty) {
 	p.Required = true
 }

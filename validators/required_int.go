@@ -3,7 +3,7 @@ package validators
 import (
 	"errors"
 
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type reqiredIntRule struct{}
@@ -20,6 +20,6 @@ func (r *reqiredIntRule) Validate(n *int) error {
 	return nil
 }
 
-func (r *reqiredIntRule) Docs(p *docs.Property) {
+func (r *reqiredIntRule) Docs(p *docs.DocsProperty) {
 	p.Required = true
 }

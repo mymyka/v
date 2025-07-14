@@ -3,7 +3,7 @@ package validators
 import (
 	"fmt"
 
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type maxIntRule struct {
@@ -24,6 +24,6 @@ func (r *maxIntRule) Validate(n *int) error {
 	return nil
 }
 
-func (r *maxIntRule) Docs(p *docs.Property) {
+func (r *maxIntRule) Docs(p *docs.DocsProperty) {
 	p.MaxValue = r.max
 }

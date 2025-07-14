@@ -3,7 +3,7 @@ package validators
 import (
 	"fmt"
 
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type maxLengthRule struct {
@@ -24,6 +24,6 @@ func (r *maxLengthRule) Validate(s *string) error {
 	return nil
 }
 
-func (r *maxLengthRule) Docs(p *docs.Property) {
+func (r *maxLengthRule) Docs(p *docs.DocsProperty) {
 	p.MaxLength = r.maxLength
 }

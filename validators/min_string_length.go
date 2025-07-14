@@ -3,7 +3,7 @@ package validators
 import (
 	"fmt"
 
-	"github.com/mymyka/v/v/docs"
+	"github.com/mymyka/v/docs"
 )
 
 type minLengthRule struct {
@@ -24,6 +24,6 @@ func (r *minLengthRule) Validate(s *string) error {
 	return nil
 }
 
-func (r *minLengthRule) Docs(p *docs.Property) {
+func (r *minLengthRule) Docs(p *docs.DocsProperty) {
 	p.MinLength = r.minLength
 }
